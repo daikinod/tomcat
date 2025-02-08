@@ -1,41 +1,30 @@
-# Java関連ファイル
-*.class
-*.jar
+# Log files
+*.log
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
 *.war
 *.nar
 *.ear
-
-# コンパイルやビルド出力
-target/
-build/
-
-# パッケージファイル
 *.zip
 *.tar.gz
 *.rar
 
-# ログファイル
-*.log
-
-# 一時ファイル
-*.tmp
-*.swp
-*~
-
-# IDEやOSの設定ファイル
-.DS_Store
-Thumbs.db
-.idea/
-.vscode/
-
-# Docker関連ファイル
-**/docker-compose.override.yml
-**/Dockerfile~
-volumes/
+# virtual machine crash logs
+hs_err_pid*
+replay_pid*
 
 # MySQLの永続化データ
 mysql_data/
 
-# 仮想マシンのクラッシュログ
-hs_err_pid*
-replay_pid*
+# IDEやOSごとの不要ファイル
+*.tmp
+.DS_Store
+.idea/
+.vscode/
+
+# 一時的なDockerファイルだけ無視する（本体のDockerfileは含める）
+**/docker-compose.override.yml
+**/Dockerfile~
