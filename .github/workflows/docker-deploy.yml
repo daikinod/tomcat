@@ -21,16 +21,17 @@ jobs:
 
       - name: Install Docker Compose
         run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose-plugin
+          sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          sudo chmod +x /usr/local/bin/docker-compose
+          docker-compose --version  # インストール確認
 
       - name: Build and start Docker containers
         run: |
-          docker compose up --build -d
+          docker-compose up --build -d
 
       - name: Run tests (optional)
         run: |
           curl -f http://localhost:8080 || exit 1
 
       - name: Stop Docker containers
-        run: docker compose down
+        run: docker-compose down
