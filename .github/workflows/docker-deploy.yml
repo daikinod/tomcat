@@ -29,7 +29,21 @@ jobs:
         run: |
           docker-compose up --build -d
 
-      - name: Run tests (optional)
+      # Tomcatの起動を待つ
+      - name: Wait for Tomcat to be ready
+        run: |
+          echo "Waiting for Tomcat to start..."
+          for i in {1..10}; do
+            if curl -s http://localhost:8080 > /dev/null; then
+              echo "Tomcat is up!"
+              break
+            else
+              echo "Tomcat is not up yet. Retrying in 5 seconds..."
+              sleep 5
+            fi
+          done
+
+      - name: Run tests
         run: |
           curl -f http://localhost:8080 || exit 1
 
