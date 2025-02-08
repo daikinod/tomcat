@@ -1,0 +1,32 @@
+name: Docker CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # mainブランチにプッシュされたときに実行
+  pull_request:
+    branches:
+      - main  # mainブランチへのプルリクエストでも実行
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # GitHubが提供するUbuntuマシンで実行
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3  # リポジトリのコードを取得
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Docker images
+        run: |
+          docker-compose up --build -d  # Docker Composeでビルド＆起動
+
+      - name: Run tests (optional)
+        run: |
+          # テストをここに追加 (例: curlでサービスの動作確認)
+          curl -f http://localhost:8080 || exit 1
+
+      - name: Stop Docker containers
+        run: docker-compose down  # コンテナの停止とクリーンアップ
