@@ -1,24 +1,41 @@
-# Compiled class file
+# Java関連ファイル
 *.class
-
-# Log file
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
 *.jar
 *.war
 *.nar
 *.ear
+
+# コンパイルやビルド出力
+target/
+build/
+
+# パッケージファイル
 *.zip
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# ログファイル
+*.log
+
+# 一時ファイル
+*.tmp
+*.swp
+*~
+
+# IDEやOSの設定ファイル
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Docker関連ファイル
+**/docker-compose.override.yml
+**/Dockerfile~
+volumes/
+
+# MySQLの永続化データ
+mysql_data/
+
+# 仮想マシンのクラッシュログ
 hs_err_pid*
 replay_pid*
